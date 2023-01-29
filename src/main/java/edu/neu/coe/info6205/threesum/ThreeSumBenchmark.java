@@ -8,6 +8,8 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
+import edu.neu.coe.info6205.util.Stopwatch;
+
 public class ThreeSumBenchmark {
     public ThreeSumBenchmark(int runs, int n, int m) {
         this.runs = runs;
@@ -34,6 +36,15 @@ public class ThreeSumBenchmark {
 
     private void benchmarkThreeSum(final String description, final Consumer<int[]> function, int n, final TimeLogger[] timeLoggers) {
         if (description.equals("ThreeSumCubic") && n > 4000) return;
+        
+        Stopwatch start =new Stopwatch();
+        function.accept(supplier.get());
+        double time=start.lap();
+        for(TimeLogger ti:timeLoggers)
+        {
+        	ti.log(time, n);
+        }
+        	
         // FIXME
         // END 
     }
