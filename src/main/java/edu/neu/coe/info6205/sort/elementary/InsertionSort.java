@@ -8,11 +8,6 @@ import edu.neu.coe.info6205.sort.Helper;
 import edu.neu.coe.info6205.sort.SortWithHelper;
 import edu.neu.coe.info6205.util.Config;
 
-/**
- * Class InsertionSort.
- *
- * @param <X> the underlying comparable type.
- */
 public class InsertionSort<X extends Comparable<X>> extends SortWithHelper<X> {
 
     /**
@@ -62,10 +57,15 @@ public class InsertionSort<X extends Comparable<X>> extends SortWithHelper<X> {
      */
     public void sort(X[] xs, int from, int to) {
         final Helper<X> helper = getHelper();
-
+        
+        for(int i= from+1;i<to ;i++)
+        	for(int j=i; j>from;j--)
+        		if(!helper.swapStableConditional(xs, j)) break;
+        return ;
         // FIXME
         // END 
     }
+    
 
     public static final String DESCRIPTION = "Insertion sort";
 
