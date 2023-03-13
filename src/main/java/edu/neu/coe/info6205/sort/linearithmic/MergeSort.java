@@ -63,6 +63,12 @@ public class MergeSort<X extends Comparable<X>> extends SortWithHelper<X> {
             insertionSort.sort(a, from, to);
             return;
         }
+        int middle=from+(to-from)/2;
+        
+        sort(aux,a,from,middle);
+        sort(aux,a,middle,to);
+        
+        merge(aux,a,from,middle,to);
 
         // FIXME : implement merge sort with insurance and no-copy optimizations
         // END 
